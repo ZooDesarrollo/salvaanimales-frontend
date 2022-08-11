@@ -1,0 +1,194 @@
+
+* {
+    font-family: "open sans", helvetica, roboto, arial, sans-serif;
+    font-weight: 700;
+    font-size: .875rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+form {
+    width: 100% !important;
+    line-height: 21px;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "lnum";
+    color: #000;
+}
+
+.example-1-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5625em;
+    color: #bdbdbd;
+    font-weight: 700;
+}
+
+fieldset {
+    border: none;
+}
+
+.fieldset {
+    border: none;
+    padding: 15px;
+    border-radius: .3125rem;
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    background-color: white;
+}
+
+.fieldset legend+* {
+    clear: both;
+}
+
+.card-only {
+    display: block;
+}
+
+.payment-request-available {
+    display: none;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 0 10px;
+}
+
+.field {
+    position: relative;
+    width: 100%;
+    border-bottom: .0625em solid #a2a2a2;
+    border-radius: unset;
+    padding: 3px;
+}
+
+.field+.container,
+.container+.field,
+.container .field,
+.field+.field {
+    margin-top: 10px;
+}
+
+.field.half {
+    width: calc(50% - 3px);
+    vertical-align: top;
+    margin-right: 3.5px;
+}
+
+.field.half+.half {
+    margin-left: 3.5px;
+    margin-right: 0px;
+}
+
+.container {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+}
+
+.select-wrapper span {
+    width: 10px;
+    height: 10px;
+    bottom: 25px;
+    font-size: 10px;
+    right: 10px;
+    line-height: 33px;
+    position: absolute;
+    text-align: center;
+    z-index: 2;
+    color: #666;
+}
+
+.installments:disabled {
+    color: #666;
+}
+
+.select-wrapper select:focus {
+    outline: none;
+}
+
+.input,
+select {
+    width: 100%;
+    color: #666;
+    background: transparent;
+    padding: 5px 0 6px 0;
+    border-bottom: 1px solid #fff;
+    transition: border-color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.input::-webkit-input-placeholder {
+    color: #c1c1c1;
+}
+
+.input::-moz-placeholder {
+    color: #c1c1c1;
+}
+
+.input:-ms-input-placeholder {
+    color: #c1c1c1;
+}
+
+.field.autofilled {
+    background-color: rgb(250, 255, 189) !important;
+}
+
+input,
+select {
+    -webkit-animation: 1ms void-animation-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border-style: none;
+    border-radius: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #fefde5 inset;
+    box-shadow: 0 0 0px 1000px #fefde5 inset;
+}
+
+.error svg .base {
+    fill: #fff;
+}
+
+.error svg .glyph {
+    fill: rgb(255, 46, 80);
+}
+
+.error .message {
+    color: #666;
+}
+
+.success .icon .border {
+    stroke: rgb(255, 46, 80);
+    ;
+}
+
+.success .icon .checkmark {
+    stroke: #666;
+}
+
+.success .title {
+    color: #666;
+}
+
+.success .message {
+    color: #666;
+}
+
+.success .reset path {
+    fill: #666;
+}
+
+#example-1-pan {
+    padding: 5px 0 6px 0;
+}
+
+#example-1-expiration {
+    padding: 5px 0 6px 0;
+}
+
+#example-1-cvv {
+    padding: 5px 0 6px 0;
+}

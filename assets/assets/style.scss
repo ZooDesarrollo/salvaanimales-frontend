@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
+@import url('https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css');
+ 
+.v-application {
+  font-family: 'Nunito', sans-serif !important;
+
+  .font-weight-medium {
+    font-weight: 600 !important;
+  }
+  *{
+    font-family: 'Nunito', sans-serif !important;
+  }
+}
+
+.v-input {
+  input {
+    font-weight: 600 !important;
+  }
+  .v-label {
+    font-weight: 600 !important;
+  }
+}
+
+.container-disconected {
+  background: url(/background-registro.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.v-input__slot::before {
+  border-style: none !important;
+
+}
+
+.v-input__slot::after {
+  border-style: none !important;
+}
+
+.fill-height {
+  height: 100vh !important;
+}
+
+.fill-width {
+  width: 100vw !important;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.container-disconected fieldset {
+  border-color: white !important;
+}
+
+.container-disconected label {
+  color: white !important;
+}
+
+.container-disconected input {
+  color: white !important;
+}
+
+.gradient-primary {
+  background: linear-gradient(#fbaf02, #FF9800) !important;
+}

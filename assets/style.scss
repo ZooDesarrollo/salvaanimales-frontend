@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
+@import url('https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css');
+$main-font:'Nunito',
+sans-serif !important;
+
+
+body {
+  @media (min-width: 768px) {
+    #__layout {
+      display: flex;
+      justify-content: center;
+    }
+
+    .v-application {
+      max-width: 600px !important;
+    }
+  }
+
+  .v-application {
+    font-family: 'Nunito', sans-serif !important;
+
+    .text-subtitle-1,
+    .text-subtitle-2,
+    .body-2,
+    .caption .text-h4,
+    .text-h6 {
+      font-family: $main-font;
+    }
+
+    .text-shadow {
+      text-shadow: 2px 2px 3px #000000;
+    }
+
+    .font-weight-medium {
+      font-weight: 600 !important;
+    }
+
+    * {
+      font-family: 'Nunito', sans-serif !important;
+    }
+
+    .fill-height {
+      height: calc(100vh - 96px) !important;
+    }
+  }
+
+  .v-input {
+    input {
+      font-weight: 700 !important;
+    }
+
+    .v-label {
+      font-weight: 700 !important;
+    }
+  }
+
+  .container-disconected {
+    background: url(/background-registro.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .v-input__slot::before {
+    border-style: none !important;
+
+  }
+
+  .v-input__slot::after {
+    border-style: none !important;
+  }
+
+  .fill-height {
+    height: 100vh !important;
+  }
+
+  .fill-width {
+    width: 100vw !important;
+  }
+
+  .p-relative {
+    position: relative;
+  }
+
+  .container-disconected fieldset {
+    border-color: white !important;
+  }
+
+  .container-disconected label {
+    color: white !important;
+  }
+
+  .container-disconected input {
+    color: white !important;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(#fbaf02, #FF9800) !important;
+  }
+
+  .gradient-secondary {
+    background: linear-gradient(90deg, #ff1865, #fd5e37) !important
+  }
+
+  .horizontal-scrolling {
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: auto;
+    height: 100px;
+    padding: 10px;
+    white-space: nowrap;
+
+  }
+
+  .full-width {
+    width: 100% !important;
+  }
+
+  .full-height {
+    height: 100% !important;
+  }
+
+  .p-relative {
+    position: relative;
+  }
+
+  .p-absolute {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .overflow-card {
+    height: 50vh;
+    overflow-x: auto;
+
+  }
+}

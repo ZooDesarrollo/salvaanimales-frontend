@@ -1,0 +1,7 @@
+{
+  "name": "ONG salva animales",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
