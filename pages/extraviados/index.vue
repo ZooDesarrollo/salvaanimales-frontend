@@ -10,9 +10,9 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row> 
       <v-col class="col-12" v-for="lostdog in lostDogs.data" :key="lostdog.id">
-        <v-card class="rounded-xl my-3" :to="`/encontrados/post/${lostdog.id}`">
+        <v-card class="rounded-xl my-3" :to="`/extraviados/post/${lostdog.id}`">
           <v-card-title class="font-weight-black d-flex justify-space-between">
             <v-chip class="red darken white--text">{{lostdog.type}} perdido</v-chip>
             <v-chip class="font-weight-black black--text mb-0 text-subtitle-2">
