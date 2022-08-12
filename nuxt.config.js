@@ -121,7 +121,7 @@ export default {
   },
 
   axios: {
-    baseURL: 'https://ongsalvaanimales.com/api'
+    baseURL: 'https://api.ongsalvaanimales.com'
   },
   /*
    ** vuetify module configuration
