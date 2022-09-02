@@ -1,11 +1,20 @@
 <template>
   <section>
     <v-carousel height="300" hide-delimiters class="mt-n14 elevation-2">
-      <v-carousel-item v-for="(picture,index) in product.pictures" :src="$axios.defaults.baseURL+picture.url" :key="index" cover>
+      <v-carousel-item v-for="(picture,index) in product.pictures" :src="$axios.defaults.baseURL+picture.url"
+        :key="index" cover>
       </v-carousel-item>
     </v-carousel>
+
     <v-container>
       <v-row>
+        <v-col class="col-12">
+          <v-btn block outlined depressed color="red" 
+            @click="deletePublication(product.id)" v-show="$auth.user.is_admin">
+            <v-icon color="red">mdi-delete</v-icon> Eliminar
+          </v-btn>
+
+        </v-col>
         <v-col class="col-6">
           <h3 class="font-weight-black black--text">{{product.name}}</h3>
         </v-col>
@@ -30,7 +39,7 @@
     <v-app-bar app bottom color="white" class="elevation-3 product-bottom-bar" height="50">
       <v-btn block small color="teal lighten-1" class="white--text font-weight-bold rounded-lg">
         COMPRAR!&nbsp;&nbsp;<v-icon>ion-ios-cart</v-icon>
-      </v-btn> 
+      </v-btn>
     </v-app-bar>
   </section>
 </template>
@@ -50,7 +59,7 @@
         text: '',
         color: 'teal lighten-1'
       })
-      this.$store.dispatch('general/setShowBottomBar',false)
+      this.$store.dispatch('general/setShowBottomBar', false)
 
       this.getProduct()
     },
@@ -61,11 +70,17 @@
             this.product = data.data
           })
       },
+      deletePublication(id) {
+        this.$axios.delete(`/productos/${id}`)
+          .then((data) => {
+            this.$router.push('/tienda')
+          })
+      },
       buyProduct(method) {
         let data = {
           payment_method: method,
           user: this.$auth.user,
-          status:'Pending',
+          status: 'Pending',
           products: [{
             product: this.product,
             cant: 1
@@ -73,10 +88,10 @@
         }
         this.$axios.post(`/orders/`, data)
           .then((data) => {
-            if(method == 'coins') {
-              this.$router.push('/store/checkout')              
+            if (method == 'coins') {
+              this.$router.push('/store/checkout')
             } else {
-            this.$router.push('/account/user/orders/'+data.data.id)
+              this.$router.push('/account/user/orders/' + data.data.id)
 
             }
           })
@@ -87,10 +102,11 @@
 </script>
 
 <style lang="scss">
-.product-bottom-bar{
-  .v-toolbar__content{
-    display: flex;
-    flex-direction: column;
+  .product-bottom-bar {
+    .v-toolbar__content {
+      display: flex;
+      flex-direction: column;
+    }
   }
-}
+
 </style>

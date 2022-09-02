@@ -18,7 +18,7 @@
       </v-col>
     </v-row>
     <v-card height="50" class="hide-card" flat></v-card>
-    <generalCreateComponent v-if="$auth.user.is_admin"></generalCreateComponent>
+    <generalCreateComponent></generalCreateComponent>
   </v-container>
 </template>
 

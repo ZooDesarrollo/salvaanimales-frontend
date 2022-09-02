@@ -21,12 +21,28 @@
             v-model="publicacion.video_url" background-color="grey lighten-3"></v-text-field>
           <v-textarea class="rounded-lg" v-model="publicacion.content" filled label="Que estas pensando...">
           </v-textarea>
-          <v-sheet color="indigo lighten-4" width="50%" height="150" v-show="publicacion.main_picture != null"
-            class="pa-2 rounded d-flex justify-center align-center dotted-border" @click="selectPhoto">
-            <v-icon size="80" v-show="publicacion.main_picture == null">mdi-camera-plus-outline</v-icon>
-            <img id="previewImg" v-show="publicacion.main_picture != null">
-          </v-sheet>
-          <input type="file" style="display:none;" id="uploadFile" @change="onFileChange" accept="image/*">
+        </v-card-text>
+        <v-card-text>
+          <v-card color="rounded-lg" outlined>
+            <v-toolbar color="red accent-2 elevation-0">
+              <v-toolbar-title class="font-weight-black white--text">Fotos</v-toolbar-title>
+            </v-toolbar>
+            <v-card-text>
+              <DragAndDropPhotoCard v-model="publicacion.pictures" multiple></DragAndDropPhotoCard>
+            </v-card-text>
+            <v-card-text>
+              <div class="d-flex full-width overflow mb-3">
+                <v-card v-for="(picture,index) in publicacion.pictures" width="70vw" class="rounded-md mr-3" :key="index">
+                  <v-img :src="previewImg(picture)" height="25vh">
+                    <v-btn @click="deleteImg(index)" x-small depressed absolute top right fab color="white"
+                      class="mt-5 mr-n3">
+                      <v-icon color="grey">mdi-close</v-icon>
+                    </v-btn>
+                  </v-img>
+                </v-card>
+              </div>
+            </v-card-text>
+          </v-card>
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
@@ -66,6 +82,7 @@
       return {
         successDialog: false,
         publicacion: {
+          pictures:[],
           contenido: ''
         }
       }
@@ -73,6 +90,13 @@
     methods: {
       selectPhoto() {
         uploadFile.click()
+      },
+      previewImg(file) {
+        console.log(file)
+        return URL.createObjectURL(file)
+      },
+      deleteImg(index) {
+        this.$delete(this.lostDog.pictures, index)
       },
       onFileChange(e) {
         var files = e.target.files || e.dataTransfer.files
@@ -90,10 +114,16 @@
           return;
 
         const data = new FormData()
-        data.append('files.main_picture', this.publicacion.main_picture)
-        this.$delete(this.publicacion, 'main_picture')
         this.publicacion.user = this.$auth.user.id
+
+        for (let index in this.publicacion.pictures) {
+          let picture = this.publicacion.pictures[index]
+          data.append(`files.pictures`, picture, picture.name)
+        }
+
+        this.$delete(this.publicacion, 'pictures')
         data.append('data', JSON.stringify(this.publicacion))
+
         this.$axios.post('/publicaciones/', data, {
             headers: {
               'Content-Type': 'multipart/form-data'

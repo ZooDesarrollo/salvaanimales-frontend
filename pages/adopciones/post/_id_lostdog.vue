@@ -29,7 +29,7 @@
           <v-divider></v-divider>
           <v-card-text>
             <h3 class="font-weight-black black--text">
-              {{lostDog.data.name}} es de {{lostDog.data.location}} tiene {{lostDog.data.years}} anios, es {{lostDog.data.sex}} y esta buscando una
+              {{lostDog.data.name}} es de {{lostDog.data.location}} tiene {{lostDog.data.years}} años, es {{lostDog.data.sex}} y esta buscando una
               familia para adoptarlo.
             </h3>
           </v-card-text>
