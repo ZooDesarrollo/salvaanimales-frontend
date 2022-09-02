@@ -40,17 +40,22 @@
                       </v-col>
                       <v-col class="col-12">
                         <v-text-field filled v-model="adoptedDog.years" class="rounded-lg" hide-details
-                          :rules="rules.requerido" label="Anios">
+                          :rules="rules.requerido" label="Años">
                         </v-text-field>
                       </v-col>
                       <v-col class="col-12">
                         <v-text-field filled v-model="adoptedDog.months" class="rounded-lg" hide-details
-                          :rules="rules.requerido" label="Anios">
+                          :rules="rules.requerido" label="Meses">
                         </v-text-field>
                       </v-col>
                       <v-col class="col-12">
                         <v-select filled v-model="adoptedDog.type" class="rounded-lg" hide-details
                           :rules="rules.requerido" label="Tipo" :items="['Perro','Gato','Otro']">
+                        </v-select>
+                      </v-col>
+                      <v-col class="col-12">
+                        <v-select filled v-model="adoptedDog.sex" class="rounded-lg" hide-details
+                          :rules="rules.requerido" label="Sexo" :items="['Hembra','Macho']">
                         </v-select>
                       </v-col>
                       <v-col class="col-12">
