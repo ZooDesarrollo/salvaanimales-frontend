@@ -26,14 +26,15 @@
               <v-list-item-content>
                 <v-list-item-title class="font-weight-bold">{{publication.user.username}}
                 </v-list-item-title>
-                <v-list-item-subtitle class="font-weight-bold">{{publication.content}}
-                </v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action class="font-weight-bold mt-0">
                 {{formatDate(publication.created_at)}}
               </v-list-item-action>
             </v-list-item>
           </v-list>
+        </v-col>
+        <v-col class="col-12">
+          <p>{{publication.content}}</p>
         </v-col>
         <v-col class="col-12 col-md-12">
           <v-btn block outlined depressed color="red" v-show="$auth.user.is_admin"

@@ -44,6 +44,11 @@
                         </v-text-field>
                       </v-col>
                       <v-col class="col-12">
+                        <v-text-field filled v-model="adoptedDog.months" class="rounded-lg" hide-details
+                          :rules="rules.requerido" label="Anios">
+                        </v-text-field>
+                      </v-col>
+                      <v-col class="col-12">
                         <v-select filled v-model="adoptedDog.type" class="rounded-lg" hide-details
                           :rules="rules.requerido" label="Tipo" :items="['Perro','Gato','Otro']">
                         </v-select>

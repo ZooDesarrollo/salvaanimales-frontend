@@ -15,9 +15,6 @@
         <v-col class="col-12 d-flex">
           <retrievePasswordComponent></retrievePasswordComponent>
         </v-col>
-        <v-col class="col-12">
-          <ProfileSocialLoginComponent></ProfileSocialLoginComponent>
-        </v-col>
       </v-row>
       <!-- NewPassword -->
       <!-- ResetPassword -->

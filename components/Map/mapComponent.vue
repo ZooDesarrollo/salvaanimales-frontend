@@ -61,6 +61,12 @@
       },
     },
     watch: {
+      "value.lat": function (val) {
+        this.pos.lat = val
+      },
+      "value.lng": function (val) {
+        this.pos.lng = val
+      },
       myPosition: {
         handler(e) {
           this.$emit('input', e)

@@ -16,7 +16,7 @@
           <v-card-title class="font-weight-black d-flex justify-space-between">
             <v-chip class="success darken-1 black--text">{{lostdog.type}}</v-chip>
           </v-card-title>
-          <v-img :src="$axios.defaults.baseURL+lostdog.pictures[0].url" height="180px" cover>
+          <v-img  :src="setUrlImg(lostdog.pictures)" height="180px" cover>
           </v-img>
           <v-divider></v-divider>
           <v-card-text>
@@ -44,6 +44,10 @@
       this.getDogs()
     },
     methods: {
+      setUrlImg(url) {
+        if(url.length>0)
+          return this.$axios.defaults.baseURL + url[0].url
+      },
       async getDogs() {
         this.lostDogs = await this.$axios.get('/adopted-dogs')
       },

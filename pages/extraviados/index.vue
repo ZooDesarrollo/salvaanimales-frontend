@@ -19,7 +19,7 @@
               <v-icon>mdi-map-marker</v-icon>{{lostdog.city}}
             </v-chip>
           </v-card-title>
-          <v-img :src="$axios.defaults.baseURL+lostdog.pictures[0].url" height="180px" cover>
+          <v-img :src="setUrlImg(lostdog.pictures)" height="180px" cover>
           </v-img>
           <v-card-actions>
             <span class="font-weight-black black--text mb-0"><b>{{lostdog.name}}</b></span>
@@ -48,6 +48,10 @@
       this.getDogs()
     },
     methods: {
+      setUrlImg(url) {
+        if(url.length>0)
+          return this.$axios.defaults.baseURL + url[0].url
+      },
       async getDogs() {
         this.lostDogs = await this.$axios.get('/lostdogs')
       }

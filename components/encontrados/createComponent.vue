@@ -42,7 +42,7 @@
                         </v-col>
                         <v-col class="col-12">
                           <v-text-field filled v-model="lostDog.city" class="rounded-lg" hide-details
-                            :rules="rules.requerido" label="cIUDAD">
+                            :rules="rules.requerido" label="Ciudad">
                           </v-text-field>
                         </v-col>
 
