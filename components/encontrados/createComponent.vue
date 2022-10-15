@@ -103,6 +103,9 @@
                 lostDog = {...lostDog,...$e}
             }"></mapComponent>
                   </v-card-text>
+                  <V-card-text v-if="sendingForm" class="d-flex justify-center">
+                    <v-progress-circular indeterminate size="100" color="primary"></v-progress-circular>
+                  </V-card-text>
                 </v-card>
               </v-stepper-content>
             </v-stepper-items>
@@ -117,7 +120,7 @@
           </template>
           <v-btn :width="(lostDogSteps==1)?'100%':'80%'" color="success darken-1" class="font-weight-black"
             @click="nextStep()">
-            <template v-if="lostDogSteps == 3">
+            <template :disabled="sendingForm" v-if="lostDogSteps == 3">
               AGREGAR
             </template>
             <template v-else>
@@ -160,6 +163,7 @@
           lng: -54.9716,
           pictures: []
         },
+        sendingForm: false,
         successDialog: false,
         rules: {
           requerido: [value => !!value || "Requerido."],
@@ -183,7 +187,7 @@
       },
       async createLostDog() {
         let formData = new FormData()
-
+        this.sendingForm = true
         for (let index in this.lostDog.pictures) {
           let picture = this.lostDog.pictures[index]
           formData.append(`files.pictures`, picture, picture.name)
@@ -196,6 +200,7 @@
               'Content-Type': 'multipart/form-data'
             }
           })
+          this.sendingForm = false
           this.$emit('input', false)
         } catch (error) {
 

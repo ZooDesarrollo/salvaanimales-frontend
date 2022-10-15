@@ -1,6 +1,6 @@
 <template>
   <div @click="goToPublication()">
-    <v-card class="mb-3" flat v-if="publication.main_picture!=null">
+    <v-card class="mb-3" flat v-if="publication.pictures.length>0">
       <v-card class="rounded-lg">
         <v-img aspect-ratio="2" lazy-src="/logo.png" gradient="to top right, #0000001c, #00000040"
           :src="mainPictureUrl()" max-height="200" class="d-flex align-end"
@@ -58,8 +58,8 @@
         return moment(date).format('DD/MM/YYYY');
       },
       mainPictureUrl() {
-        if(this.publication.main_picture!=null)
-          return this.$axios.defaults.baseURL+this.publication.main_picture.url
+        if(this.publication.pictures.length>0)
+          return this.$axios.defaults.baseURL+this.publication.pictures[0].url
         else
           return '/logo.png'
       },

@@ -42,10 +42,15 @@
               </v-card-text>
             </v-card>
           </v-card-text>
+          <V-card-text v-if="sendingForm" class="d-flex justify-center">
+            <v-progress-circular indeterminate size="100" color="primary"></v-progress-circular>
+          </V-card-text>
+
+
           <v-divider></v-divider>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" rounded class="primary font-weight-bold" @click="createPublication()">
+            <v-btn color="primary" rounded :disabled="sendingForm" class="primary font-weight-bold" @click="createPublication()">
               AGREGAR producto
             </v-btn>
           </v-card-actions>
@@ -79,6 +84,7 @@
       data() {
         return {
           successDialog: false,
+          sendingForm: false,
           publicacion: {
             pictures:[],
             contenido: ''
@@ -116,7 +122,7 @@
             let picture = this.publicacion.pictures[index]
             data.append(`files.pictures`, picture, picture.name)
           }
-  
+          this.sendingForm = true
           this.$delete(this.publicacion, 'pictures')
           data.append('data', JSON.stringify(this.publicacion))
 
@@ -126,6 +132,7 @@
               }
             })
             .then((data) => {
+              this.sendingForm = false
               this.publicacion = {}
               this.$emit('input', false)
               this.successDialog = true

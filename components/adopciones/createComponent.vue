@@ -91,6 +91,10 @@
                     </v-card>
                   </div>
                 </v-card-text>
+                <V-card-text v-if="sendingForm" class="d-flex justify-center">
+                    <v-progress-circular indeterminate size="100" color="primary"></v-progress-circular>
+                  </V-card-text>
+
               </v-card>
             </v-stepper-content>
           </v-stepper-items>
@@ -102,7 +106,7 @@
             </v-btn>
             <v-spacer></v-spacer>
           </template>
-          <v-btn :width="(adoptedDogSteps==1)?'100%':'80%'" color="success darken-2" class="white--text rounded-lg font-weight-black"
+          <v-btn :width="(adoptedDogSteps==1)?'100%':'80%'" :disabled="sendingForm" color="success darken-2" class="white--text rounded-lg font-weight-black"
             @click="nextStep()">
             <template v-if="adoptedDogSteps == 2">
               AGREGAR
@@ -138,6 +142,7 @@
         },
         adoptedDogSteps: 1,
         successDialog: false,
+        sendingForm:false,
         rules: {
           requerido: [value => !!value || "Requerido."],
         },
@@ -165,7 +170,7 @@
       },
       async createadoptedDog() {
         let formData = new FormData()
-
+        this.sendingForm = true
         for (let index in this.adoptedDog.pictures) {
           let picture = this.adoptedDog.pictures[index]
           formData.append(`files.pictures`, picture, picture.name)
@@ -178,6 +183,7 @@
               'Content-Type': 'multipart/form-data'
             }
           })
+          this.sendingForm = false
           this.$emit('input', false)
           this.successDialog = true
         } catch (error) {

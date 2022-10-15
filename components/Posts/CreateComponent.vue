@@ -34,20 +34,20 @@
               <div class="d-flex full-width overflow mb-3">
                 <v-card v-for="(picture,index) in publicacion.pictures" width="70vw" class="rounded-md mr-3" :key="index">
                   <v-img :src="previewImg(picture)" height="25vh">
-                    <v-btn @click="deleteImg(index)" x-small depressed absolute top right fab color="white"
-                      class="mt-5 mr-n3">
-                      <v-icon color="grey">mdi-close</v-icon>
-                    </v-btn>
                   </v-img>
                 </v-card>
               </div>
             </v-card-text>
+            <V-card-text v-if="sendingForm" class="d-flex justify-center">
+            <v-progress-circular indeterminate size="100" color="primary"></v-progress-circular>
+          </V-card-text>
+
           </v-card>
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" rounded class="primary font-weight-bold" @click="createPublication()">
+          <v-btn color="primary" rounded :disabled="sendingForm" class="primary font-weight-bold" @click="createPublication()">
             AGREGAR PUBLICACION
           </v-btn>
         </v-card-actions>
@@ -81,6 +81,7 @@
     data() {
       return {
         successDialog: false,
+        sendingForm: false,
         publicacion: {
           pictures:[],
           contenido: ''
@@ -96,7 +97,7 @@
         return URL.createObjectURL(file)
       },
       deleteImg(index) {
-        this.$delete(this.lostDog.pictures, index)
+        this.$delete(this.publicacion.pictures, index)
       },
       onFileChange(e) {
         var files = e.target.files || e.dataTransfer.files
@@ -109,7 +110,7 @@
 
       },
       createPublication() {
-
+        this.sendingForm = true
         if (this.publicacion.content == '' && !this.publicacion.main_picture)
           return;
 
@@ -131,6 +132,7 @@
           })
           .then((data) => {
             this.publicacion = {}
+            this.sendingForm = false
             this.$root.$emit('newPublication', data.data)
             this.$emit('input', false)
             this.successDialog = true

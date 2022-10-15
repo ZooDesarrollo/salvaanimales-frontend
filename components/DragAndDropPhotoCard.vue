@@ -9,7 +9,7 @@
       <v-icon size="80" v-show="!showPreview">mdi-camera-plus-outline</v-icon>
       <img :src="previewImg()" style="max-height: 100%;max-width: 100%" v-show="showPreview">
     </v-sheet>
-    <input type="file" style="display:none;" id="uploadFile" @change="selectUploadType" accept="image/*">
+    <input type="file" style="display:none;" id="uploadFile" ref="uploadFile" @change="selectUploadType" accept="image/*">
   </div>
 </template>
 
@@ -40,7 +40,7 @@
         }
       },
       selectPhoto(event) {
-        uploadFile.click()
+        this.$refs.uploadFile.click()
       },
       onFileChange(e) {
         var files = e.target.files || e.dataTransfer.files
