@@ -38,9 +38,9 @@
                 </v-card>
               </div>
             </v-card-text>
-            <V-card-text v-if="sendingForm" class="d-flex justify-center">
+            <v-card-text v-if="sendingForm" class="d-flex justify-center">
             <v-progress-circular indeterminate size="100" color="primary"></v-progress-circular>
-          </V-card-text>
+          </v-card-text>
 
           </v-card>
         </v-card-text>
